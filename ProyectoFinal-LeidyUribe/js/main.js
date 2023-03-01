@@ -53,15 +53,15 @@ function verInventario(array) {
   }
 }
 
-//funcion para agregar un producto al carrito de compras
-function agregarAlCarrito(producto) {
-  console.log(`El producto ${producto.codigo} de nombre ${producto.nombre} ha sido agregado al carrito y vale ${producto.precio}`)
-  //sumarlo a productosEnCarrito
-  productosEnCarrito.push(producto)
-  //setearlo en storage
-  localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
-  console.log(productosEnCarrito)
-}
+// //funcion para agregar un producto al carrito de compras
+// function agregarAlCarrito(producto) {
+//   console.log(`El producto ${producto.codigo} de nombre ${producto.nombre} ha sido agregado al carrito y vale ${producto.precio}`)
+//   //sumarlo a productosEnCarrito
+//   productosEnCarrito.push(producto)
+//   //setearlo en storage
+//   localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+//   console.log(productosEnCarrito)
+// }
 
 //funcion para cargar un producto
 function cargarProducto(array) {
@@ -267,7 +267,8 @@ function generarOC(){
   var correoCliInput = document.getElementById("correoCliInput");
   if(nombreCliInput.value.trim().length > 0 && apellidoCliInput.value.trim().length  && dniCliInput.value.trim().length>5 && correoCliInput.value.trim().length > 0 ){
     modalFinalizarCompra.hide();
-    localStorage.setItem("carrito","[]")
+    productosEnCarrito = []
+    localStorage.setItem("carrito", productosEnCarrito)
     Swal.fire({
       position: 'top-end',
       icon: 'success',
@@ -275,7 +276,6 @@ function generarOC(){
       showConfirmButton: false,
       timer: 1500
     })
-    
   }else{
     Swal.fire(
       'Datos incorrectos?',
